@@ -1,4 +1,4 @@
-## My Library
+# My Library
 
 This repo holds a mysql database representing the (physical) books of my home library.  
 I began working on it as an incentive to develop my sql skills, but also because I actually wanted to run various queries against my books.
@@ -100,8 +100,8 @@ CREATE PROCEDURE InsertBook(
   IN translator_last_name varchar(45)
 )
 BEGIN
-	-- The unique constraints of each table should disallow duplicates,
-	-- hence the INSERT IGNORE, we don't want e.g. an existing editor to cancel the whole operation.
+    -- The unique constraints of each table should disallow duplicates,
+    -- hence the INSERT IGNORE, we don't want e.g. an existing editor to cancel the whole operation.
     INSERT IGNORE INTO editor (name) VALUES (editor_name);
     SET @EditorID = (SELECT editor_id FROM editor WHERE name = editor_name);
 
@@ -149,5 +149,5 @@ mysql> SOURCE /path/to/my-library_dump.sql
 ```
 
 ---
-The mysqldump command used was:
-`mysqldump --skip-opt -uroot -p -B my-library > $git-repos/my-library/my-library_dump.sql`
+The mysqldump command used was:  
+`bash$ mysqldump --skip-opt -uroot -p -B my-library > "$git-repos/my-library/my-library_dump.sql"`
